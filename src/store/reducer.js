@@ -36,6 +36,21 @@ const reducer = (state = initialState, action) => {
         ...state,
         results: state.results.concat({ id: new Date(), value: state.counter })
       };
+    case 'DELETE_RESULT':
+      // One way to immutably remove an element from an array:
+      // const id = 2;
+      // const newArray = [...state.results];
+      // newArray.splice(id, 1);
+
+      // Another way (better way):
+      const updatedArray = state.results.filter(
+        result => result.id !== action.payload.resElID
+      );
+
+      return {
+        ...state,
+        results: updatedArray
+      };
   }
   return state;
 };
