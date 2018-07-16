@@ -30,8 +30,9 @@ const resultReducer = (state = initialState, action) => {
         ...state,
         results: updatedArray
       };
+    default:
+      return state;
   }
-  return state;
 };
 
 export default resultReducer;
